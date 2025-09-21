@@ -3,6 +3,10 @@ R2PM_BEGIN
 R2PM_DESC "rev.ng decompiler"
 
 R2PM_INSTALL() {
+	if [ `uname` == 'OpenBSD' ];then
+		echo "OpenBSD not supported!"
+		exit 1;
+        fi;
 	cd "${R2PM_GITDIR}"
 	curl -L -s https://rev.ng/downloads/revng-distributable/master/install.sh | bash
 	ln -fs "${PWD}/revng/revng" "${R2PM_BINDIR}/revng"
